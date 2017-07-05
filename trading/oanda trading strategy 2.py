@@ -11,7 +11,7 @@ from datetime import datetime,timedelta
 
 def hisdata(n):
 #    url = "https://api-fxtrade.oanda.com/v3/instruments/EUR_USD/candles?count=300&granularity=M10"
-#    header = {"Content-Type":"application/json","Authorization":"Bearer 67a64d6bf0a17b287b6f9c18890a3c78-58e4602edc9ed11420a52811ac0f456e"}
+#    header = {"Content-Type":"application/json","Authorization":"Bearer yourtokenid"}
     url = "https://api-fxtrade.oanda.com/v1/candles?instrument=EUR_USD&count=5000&granularity=M10"
     res = requests.get(url)
     data = pd.read_json(res.text,orient='records')
@@ -48,7 +48,7 @@ def cd(df,n,m,l):
         return -1
 def decision(n,m,l,counter):
 #        url = "https://api-fxtrade.oanda.com/v3/instruments/EUR_USD/candles?count=300&price=M&granularity=M10"
-#        header = {"Content-Type":"application/json","Authorization":"Bearer 67a64d6bf0a17b287b6f9c18890a3c78-58e4602edc9ed11420a52811ac0f456e"}
+#        header = {"Content-Type":"application/json","Authorization":"Bearer yourtokenid"}
         url = "https://api-fxtrade.oanda.com/v1/candles?instrument=EUR_USD&count=300&granularity=M10"
         df = requests.get(url)
         data = pd.read_json(df.text,orient='records')
@@ -88,9 +88,9 @@ def decision(n,m,l,counter):
         return counter,temp
 
 def buy(unit):
-    url = "https://api-fxtrade.oanda.com/v3/accounts/001-003-1458794-002/orders"
+    url = "https://api-fxtrade.oanda.com/v3/accounts/youraccountid/orders"
     string = '{"order":{"instrument":"EUR_USD","units":'+ str(unit) +',"type":"MARKET"}}'
-    header = {"Content-Type":"application/json","Authorization":"Bearer 67a64d6bf0a17b287b6f9c18890a3c78-58e4602edc9ed11420a52811ac0f456e"}
+    header = {"Content-Type":"application/json","Authorization":"Bearer yourtokenid"}
     res = requests.post(url,data=string, headers=header)    
 def sample(df):
     df1 = df.copy()

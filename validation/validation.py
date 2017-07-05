@@ -116,18 +116,6 @@ def decision(n,m,l,counter):
         else:
             print('not triggered')
         return counter,temp.iloc[-1]['dif'],temp.iloc[-1]['difema'],temp.iloc[-1]['closeAsk'],temp.iloc[-1]['closeAsk']
-def sell(unit):
-    url = "https://api-fxpractice.oanda.com/v1/accounts/5494254/orders"
-    payload = {"instrument":"EUR_USD","units":unit,"side":"sell","type":"market"}
-    header = {"Authorization":"Bearer 4cf62e42fbd9b0e3b4223a9d620595d0-f766e75c67a09158398ea5f738d6ab3b"}
-    res = requests.post(url,data=payload, headers=header)
-##    print (res.text)
-    # res.json()
-def buy(unit):
-    url = "https://api-fxpractice.oanda.com/v1/accounts/5494254/orders"
-    payload = {"instrument":"EUR_USD","units":unit,"side":"buy","type":"market"}
-    header = {"Authorization":"Bearer 4cf62e42fbd9b0e3b4223a9d620595d0-f766e75c67a09158398ea5f738d6ab3b"}
-    res = requests.post(url,data=payload, headers=header)    
 def sample(df):
     df1 = df.copy()
     a = random.randint(100,300)
